@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Task;    // 追加
 
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 class TasksController extends Controller
 {
     // getでtasks/にアクセスされた場合の「一覧表示処理」
@@ -36,16 +38,15 @@ class TasksController extends Controller
     {
         // バリデーション
         $request->validate([
-            'user_id' => 'required|max:255',   // 追加 
             'status' => 'required|max:10',   // 追加
             'content' => 'required|max:255',
         ]);
 
         // タスクを作成
         $task = new Task;
-        $task->user_id = $request->user_id;    // 追加
         $task->status = $request->status;    // 追加
         $task->content = $request->content;
+        $task->user_id = Auth::id();
         $task->save();
 
         // トップページへリダイレクトさせる
@@ -81,7 +82,6 @@ class TasksController extends Controller
     {
         // バリデーション
         $request->validate([
-            'user_id' => 'required|max:255',   // 追加 
             'status' => 'required|max:10',   // 追加
             'content' => 'required|max:255',
         ]);
@@ -89,7 +89,6 @@ class TasksController extends Controller
         // idの値でタスクを検索して取得
         $task = Task::findOrFail($id);
         // タスクを更新
-        $task->user_id = $request->user_id;    // 追加
         $task->status = $request->status;    // 追加
         $task->content = $request->content;
         $task->save();
