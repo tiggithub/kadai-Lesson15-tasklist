@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Task;    // 追加
 
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class TasksController extends Controller
 {
@@ -38,6 +38,7 @@ class TasksController extends Controller
     {
         // バリデーション
         $request->validate([
+            'user_id' => 'required|max:10',   // 追加
             'status' => 'required|max:10',   // 追加
             'content' => 'required|max:255',
         ]);
@@ -82,6 +83,7 @@ class TasksController extends Controller
     {
         // バリデーション
         $request->validate([
+            'user_id' => 'required|max:10',   // 追加
             'status' => 'required|max:10',   // 追加
             'content' => 'required|max:255',
         ]);
