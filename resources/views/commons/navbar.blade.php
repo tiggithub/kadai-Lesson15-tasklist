@@ -24,6 +24,8 @@
                             <li class="dropdown-divider"></li>
                             {{-- ログアウトへのリンク --}}
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
+                            {{-- タスク作成ページへのリンク --}}
+               　　　　   　　　 <li class="nav-item">{!! link_to_route('tasks.create', '新規タスクの投稿', [], ['class' => 'nav-link']) !!}</li>
                         </ul>
                     </li>
                 @else
@@ -33,8 +35,7 @@
                     <li class="nav-item">{!! link_to_route('login', 'Login', [], ['class' => 'nav-link']) !!}</li>
                 @endif
                 
-                {{-- タスク作成ページへのリンク --}}
-                <li class="nav-item">{!! link_to_route('tasks.create', '新規タスクの投稿', [], ['class' => 'nav-link']) !!}</li>
+
             </ul>
         </div>
     </nav>

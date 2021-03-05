@@ -8,10 +8,6 @@
         <div class="col-6">
             {!! Form::model($task, ['route' => 'tasks.store']) !!}
             
-                <div class="form-group">
-                    {!! Form::label('user_id', 'ユーザーID:') !!}
-                    {!! Form::text('user_id', null, ['class' => 'user_id']) !!}
-                </div>
                 
                 <div class="form-group">
                     {!! Form::label('status', 'ステータス:') !!}
